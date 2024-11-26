@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" type="text/css" href="main.css">
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,400i" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <title>Website Coming Soon</title>
+  </head>
+  <script>
+    // Function to get a cookie by name
+    function getCookie(name) {
+        let cookieArr = document.cookie.split("; ");
+        for (let i = 0; i < cookieArr.length; i++) {
+            let cookiePair = cookieArr[i].split("=");
+            if (name === cookiePair[0]) {
+                return cookiePair[1];
+            }
+        }
+        return null;
+    }
+    
+    // Function to set a cookie with name, value, and expiration days
+    function setCookie(name, value, days) {
+        let date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000)); // Expire in specified days
+        let expires = "expires=" + date.toUTCString();
+        document.cookie = name + "=" + value + "; " + expires + "; path=/";
+    }
+    
+    // Check if password cookie exists
+    var passwordCookie = getCookie("pass");
+    
+    if (passwordCookie === "124123") {
+        alert("Access Granted!");
+    } else {
+        // Prompt for password only once initially
+        var password = prompt("Enter password:");
+    
+        // Loop to validate password
+        while (password !== "sigmasus124" && password !== "sigmasus1245" && password == null) {
+            password = prompt("Incorrect password. Please try again:");
+        }
+        // If correct password is entered, set cookie and grant access
+        if (password === "sigmasus124" || password === "sigmasus1245") {
+            alert("Access granted!");
+            setCookie("pass", "124123", 14); // Set cookie to expire in 14 days
+        }
+    }
+</script>
+  <body>
+    <div class="viewport">
+      <div class="text-box">
+        <p class="title">Website Coming Soon</p>
+        <p class="subtitle"><i>Please Check Back Later</i></p>
+      </div>
+      <!-- Start here -->
+      <p class="footer">Website designed by <a href="http://github.com/charliebritton">Charlie Britton</a>. | Free placeholder from <a href="http://github.com/charliebritton/website-placeholder">here</a>. | Version 1.1</p>
+      <!-- End here -->
+    </div>
+  </body>
+</html>
